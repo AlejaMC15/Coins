@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Table = (coin, search) => {
-  console.log(coin.coin.coin.data);
+const Table = ({ coins, search }) => {
+  const [coinList, setCoinList] = useState(coins);
 
-  const filters = coin.coin.coin.data.filter((item) =>
-    item?.name.tolowercase().includes(search.tolowercase())
-  );
+  useEffect(() => {
+    setCoinList(
+      coins.filter((coin) =>
+        coin.name.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, coins]);
 
   return (
     <div>
@@ -23,7 +27,7 @@ const Table = (coin, search) => {
                 </tr>
               </thead>
               <tbody>
-                {filters.map((item, index) => (
+                {coinList.map((item, index) => (
                   <tr key={index.id}>
                     <td>
                       <img

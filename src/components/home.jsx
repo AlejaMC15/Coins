@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Table from "./table";
 
-const Search = (coin) => {
+const Search = ({ coins }) => {
   const [search, setSearch] = useState("");
 
   return (
@@ -23,7 +23,7 @@ const Search = (coin) => {
             </form>
           </div>
         </div>
-        <Table coin={coin} search={search} />
+        <Table coins={coins} search={search} />
       </div>
     </div>
   );
